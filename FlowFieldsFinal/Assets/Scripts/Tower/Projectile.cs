@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     {
         if(other.CompareTag("Enemy") && other.gameObject == currentTarget.gameObject)
         {
-            // Take Health Down of Enemy
+            other.GetComponent<Enemy>().TakeDamage(damage);
             Destroy(this.gameObject);
         }
     }

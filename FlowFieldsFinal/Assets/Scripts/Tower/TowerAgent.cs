@@ -18,8 +18,8 @@ public class TowerAgent : MonoBehaviour
     }
     [Header("Info")]
     public float range;
-    private List<GameObject> currentEnemiesInRange = new List<GameObject>();
-    private GameObject currentEnemy;
+    public List<Enemy> currentEnemiesInRange = new List<Enemy>();
+    private Enemy currentEnemy;
     public TowerTargetPriority targetPriority;
 
     [Header("Attacking")]
@@ -29,13 +29,6 @@ public class TowerAgent : MonoBehaviour
     public Transform projectileSpawnPos;
     public int projectileDamage;
     public float projectileSpeed;
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -49,7 +42,7 @@ public class TowerAgent : MonoBehaviour
         }
     }
 
-    private GameObject GetEnemy()
+    private Enemy GetEnemy()
     {
         currentEnemiesInRange.RemoveAll(x => x == null);
         
@@ -63,6 +56,35 @@ public class TowerAgent : MonoBehaviour
             case TowerTargetPriority.First:
             {
                 return currentEnemiesInRange[0];
+            }
+            case TowerTargetPriority.Close:
+            {
+                Enemy closest = null;
+                float dist = 99;
+                foreach (var enemy in currentEnemiesInRange)
+                {
+                    float d = (transform.position - enemy.transform.position).sqrMagnitude;
+                    if(d < dist)
+                    {
+                        closest = enemy;
+                        dist = d;
+                    }
+                }
+                return closest;
+            }
+            case TowerTargetPriority.Strong:
+            {
+                Enemy strongest = null;
+                int strongestHealth = 0;
+                foreach(Enemy enemy in currentEnemiesInRange)
+                {
+                    if(enemy.Health > strongestHealth)
+                    {
+                        strongest = enemy;
+                        strongestHealth = enemy.Health;
+                    }
+                }
+                return strongest;
             }
         }
 
@@ -81,14 +103,14 @@ public class TowerAgent : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            currentEnemiesInRange.Add(other.gameObject);
+            currentEnemiesInRange.Add(other.GetComponent<Enemy>());
         }
     }
     private void OnTriggerExit (Collider other)
     {
         if(other.CompareTag("Enemy"))
         {
-            currentEnemiesInRange.Remove(other.gameObject);
+            currentEnemiesInRange.Remove(other.GetComponent<Enemy>());
         }
     }
 }
