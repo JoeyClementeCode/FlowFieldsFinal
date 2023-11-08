@@ -18,8 +18,8 @@ public class TowerAgent : MonoBehaviour
     }
     [Header("Info")]
     public float range;
-    public List<Enemy> currentEnemiesInRange = new List<Enemy>();
-    private Enemy currentEnemy;
+    public List<GameObject> currentEnemiesInRange = new List<GameObject>();
+    private GameObject currentEnemy;
     public TowerTargetPriority targetPriority;
 
     [Header("Attacking")]
@@ -42,7 +42,7 @@ public class TowerAgent : MonoBehaviour
         }
     }
 
-    private Enemy GetEnemy()
+    private GameObject GetEnemy()
     {
         currentEnemiesInRange.RemoveAll(x => x == null);
         
@@ -59,7 +59,7 @@ public class TowerAgent : MonoBehaviour
             }
             case TowerTargetPriority.Close:
             {
-                Enemy closest = null;
+                GameObject closest = null;
                 float dist = 99;
                 foreach (var enemy in currentEnemiesInRange)
                 {
@@ -74,14 +74,14 @@ public class TowerAgent : MonoBehaviour
             }
             case TowerTargetPriority.Strong:
             {
-                Enemy strongest = null;
+                GameObject strongest = null;
                 int strongestHealth = 0;
-                foreach(Enemy enemy in currentEnemiesInRange)
+                foreach(GameObject enemy in currentEnemiesInRange)
                 {
-                    if(enemy.Health > strongestHealth)
+                    if(enemy.GetComponent<Enemy>().Health > strongestHealth)
                     {
                         strongest = enemy;
-                        strongestHealth = enemy.Health;
+                        strongestHealth = enemy.GetComponent<Enemy>().Health;
                     }
                 }
                 return strongest;
@@ -103,14 +103,14 @@ public class TowerAgent : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            currentEnemiesInRange.Add(other.GetComponent<Enemy>());
+            currentEnemiesInRange.Add(other.gameObject);
         }
     }
     private void OnTriggerExit (Collider other)
     {
         if(other.CompareTag("Enemy"))
         {
-            currentEnemiesInRange.Remove(other.GetComponent<Enemy>());
+            currentEnemiesInRange.Remove(other.gameObject);
         }
     }
 }
