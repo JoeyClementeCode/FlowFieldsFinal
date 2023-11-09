@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EconomyManager : MonoBehaviour
 {
-    public int currentCurrency;
-    public int maxCurrency;
+    public int currentCurrency = 10;
+    public int maxCurrency = 100;
 
-    public int towerCurrencyCreationAmount;
+    public int towerCurrencyCreationAmount = 5;
 
     public bool SpawnTower()
     {
-        if (currentCurrency > towerCurrencyCreationAmount)
+        if (currentCurrency >= towerCurrencyCreationAmount)
         {
             currentCurrency -= towerCurrencyCreationAmount;
             return true;

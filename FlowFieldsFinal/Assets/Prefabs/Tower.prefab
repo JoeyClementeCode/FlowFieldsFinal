@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1900107838694279848}
   m_Layer: 0
   m_Name: Tower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,13 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304c2a4d495a0d943a3e54c90726428d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0
+  currentEnemiesInRange: []
   targetPriority: 0
-  attackRate: 0
-  projectilePrefab: {fileID: 0}
-  projectileSpawnPos: {fileID: 0}
-  projectileDamage: 0
-  projectileSpeed: 0
+  attackRate: 1
+  projectilePrefab: {fileID: 4681471467900478039, guid: fa265de4c6e02014382899f8f5bbcae3,
+    type: 3}
+  projectileSpawnPos: {fileID: 6842186234297028554}
+  projectileDamage: 1
+  projectileSpeed: 5
 --- !u!135 &1900107838694279848
 SphereCollider:
   m_ObjectHideFlags: 0

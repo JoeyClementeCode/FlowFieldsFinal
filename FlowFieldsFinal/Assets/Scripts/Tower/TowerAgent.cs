@@ -16,8 +16,8 @@ public class TowerAgent : MonoBehaviour
         Close,
         Strong
     }
+    
     [Header("Info")]
-    public float range;
     public List<GameObject> currentEnemiesInRange = new List<GameObject>();
     private GameObject currentEnemy;
     public TowerTargetPriority targetPriority;

@@ -6,10 +6,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public int Health { get; set; }
+    public int Value { get; set; }
 
     public void Start()
     {
         Health = 3;
+        Value = 5;
     }
 
     public void TakeDamage(int damage)
@@ -18,6 +20,7 @@ public class Enemy : MonoBehaviour
 
         if (Health <= 0)
         {
+            GameManager.instance.economy.GainCurrency(Value);
             Destroy(this.gameObject);
         }
     }
