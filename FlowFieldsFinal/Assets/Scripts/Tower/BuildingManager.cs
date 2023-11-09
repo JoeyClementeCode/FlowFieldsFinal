@@ -59,9 +59,22 @@ public class BuildingManager : MonoBehaviour
     private IEnumerator SwitchPriority(RaycastHit hit)
     {
         onCooldown = true;
+        Debug.Log("Hitting Tower");
 
-        TowerAgent tower = hit.transform.GetComponent<TowerAgent>();
-        tower.targetPriority++;
+        TowerAgent tower = hit.transform.GetComponentInParent<TowerAgent>();
+
+        switch (tower.targetPriority)
+        {
+            case TowerAgent.TowerTargetPriority.First:
+                tower.targetPriority = TowerAgent.TowerTargetPriority.Close;
+                break;
+            case TowerAgent.TowerTargetPriority.Close:
+                tower.targetPriority = TowerAgent.TowerTargetPriority.Strong;
+                break;
+            case TowerAgent.TowerTargetPriority.Strong:
+                tower.targetPriority = TowerAgent.TowerTargetPriority.First;
+                break;
+        }
         
         yield return new WaitForSeconds(spawnCooldown);
         onCooldown = false;

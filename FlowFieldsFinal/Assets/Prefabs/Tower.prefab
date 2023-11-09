@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1900107838694279848}
   m_Layer: 0
   m_Name: Tower
-  m_TagString: Tower
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,6 +257,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 56742f32321353b409b98a38aef6c4cd, type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 56742f32321353b409b98a38aef6c4cd, type: 3}
+      propertyPath: m_TagString
+      value: Tower
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 56742f32321353b409b98a38aef6c4cd, type: 3}
       propertyPath: m_LocalScale.x
