@@ -10,7 +10,7 @@ public class EnemyAttackingState : EnemyBaseState
 
     public override void UpdateState(EnemyStateManager enemy)
     {
-        enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         if (attackTimer > 0)
         {
