@@ -5,17 +5,58 @@ using UnityEngine;
 public class BuildingManager : MonoBehaviour
 {
     [SerializeField] private GameObject towerPrefab;
+    [SerializeField] private GameObject phantomTower;
     [SerializeField] private Camera cam;
 
+
+    public bool buildMode = false;
+    public bool visualizationActive = false;
     public bool onCooldown = false;
     public float spawnCooldown = 2.0f;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C) && !onCooldown)
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            CastLine();
+            BuildMode();
+        }
+        
+        if (buildMode)
+        {
+            Visualization();
+            
+            if (Input.GetKeyDown(KeyCode.C) && !onCooldown)
+            {
+                CastLine();
+            }
+        }
+    }
+    
+    private void BuildMode()
+    {
+        if (buildMode)
+        {
+            buildMode = false;
+            visualizationActive = false;
+            Visualization();
+        }
+        else if (!buildMode)
+        {
+            buildMode = true;
+            visualizationActive = true;
+        }
+    }
+
+    private void Visualization()
+    {
+        if (visualizationActive)
+        {
+            
+        }
+        else if (!visualizationActive)
+        {
+            
         }
     }
 
