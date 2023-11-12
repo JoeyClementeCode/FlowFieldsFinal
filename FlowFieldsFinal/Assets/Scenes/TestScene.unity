@@ -1229,7 +1229,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 7156301645698086240, guid: c3edc80e2df021d42bf7c9e5a58a4a27,
     type: 3}
+  phantomTower: {fileID: 1175967723487656055, guid: 7dbe9e801bdd8114ea2cc05b86e544b3,
+    type: 3}
   cam: {fileID: 330585545}
+  buildMode: 0
   onCooldown: 0
   spawnCooldown: 2
 --- !u!1 &1022760689

@@ -6,11 +6,11 @@ public class BuildingManager : MonoBehaviour
 {
     [SerializeField] private GameObject towerPrefab;
     [SerializeField] private GameObject phantomTower;
+    private GameObject phantom;
     [SerializeField] private Camera cam;
 
 
     public bool buildMode = false;
-    public bool visualizationActive = false;
     public bool onCooldown = false;
     public float spawnCooldown = 2.0f;
 
@@ -38,26 +38,34 @@ public class BuildingManager : MonoBehaviour
         if (buildMode)
         {
             buildMode = false;
-            visualizationActive = false;
-            Visualization();
+
+            if (phantom != null)
+            {
+                Destroy(phantom);
+                phantom = null;
+            }
         }
         else if (!buildMode)
         {
+            
             buildMode = true;
-            visualizationActive = true;
         }
     }
 
     private void Visualization()
     {
-        if (visualizationActive)
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit);
+
+
+        if (phantom == null)
         {
-            
+            phantom = Instantiate(phantomTower, new Vector3(hit.point.x, hit.point.y - 0.5f, hit.point.z), Quaternion.identity);
         }
-        else if (!visualizationActive)
-        {
-            
-        }
+
+        phantom.transform.position = new Vector3(hit.point.x, hit.point.y - 0.5f, hit.point.z);
+
     }
 
     private void CastLine()
