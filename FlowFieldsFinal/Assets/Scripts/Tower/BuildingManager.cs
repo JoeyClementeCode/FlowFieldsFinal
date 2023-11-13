@@ -9,10 +9,18 @@ public class BuildingManager : MonoBehaviour
     private GameObject phantom;
     [SerializeField] private Camera cam;
 
+    
+
 
     public bool buildMode = false;
     public bool onCooldown = false;
+    public bool isPlaceable = false;
     public float spawnCooldown = 2.0f;
+
+    public Color placeableColor;
+    public Color notPlaceableColor;
+    public Material phantomMaterial;
+    public Shader phantomShader;
 
     // Update is called once per frame
     void Update()
@@ -24,12 +32,7 @@ public class BuildingManager : MonoBehaviour
         
         if (buildMode)
         {
-            Visualization();
-            
-            if (Input.GetKeyDown(KeyCode.C) && !onCooldown)
-            {
-                CastLine();
-            }
+            Building();
         }
     }
     
@@ -52,40 +55,59 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
-    private void Visualization()
+    private void Building()
     {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        Physics.Raycast(ray, out hit);
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(ray, out hit, 5);
+        Debug.DrawRay(transform.position, ray.direction, Color.yellow);
 
-
-        if (phantom == null)
+        if (hit.collider != null)
         {
-            phantom = Instantiate(phantomTower, new Vector3(hit.point.x, hit.point.y - 0.5f, hit.point.z), Quaternion.identity);
+            if (phantom == null)
+            {
+                phantom = Instantiate(phantomTower, new Vector3(hit.point.x, hit.point.y, hit.point.z), Quaternion.identity);
+            }
+
+            phantom.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+
+            Checks(hit);
+        
+            if (Input.GetKeyDown(KeyCode.C) && !onCooldown && isPlaceable)
+            {
+                StartCoroutine(SpawnTower(hit));
+            }
         }
-
-        phantom.transform.position = new Vector3(hit.point.x, hit.point.y - 0.5f, hit.point.z);
-
     }
 
-    private void CastLine()
+    private void Checks(RaycastHit hit)
     {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        Physics.Raycast(ray, out hit);
-
+        
         if (hit.transform.CompareTag("Ground"))
         {
-            StartCoroutine(SpawnTower(hit));
-        }
-        if (hit.transform.CompareTag("Tower"))
-        {
-            StartCoroutine(SwitchPriority(hit));
+            isPlaceable = true;
+            Debug.Log("Ground");
+            phantomMaterial.SetColor("_PhantomColor", placeableColor);
+            //StartCoroutine(SpawnTower(hit));
         }
         else
         {
+            isPlaceable = false;
+            phantomMaterial.SetColor("_PhantomColor", notPlaceableColor);
             Debug.Log("Not Anything?");
         }
+
+        if (hit.transform == null)
+        {
+            isPlaceable = false;
+            Debug.Log("Null");
+        }
+        
+        if (hit.transform.CompareTag("Tower"))
+        {
+            //StartCoroutine(SwitchPriority(hit));
+        }
+
     }
 
     private IEnumerator SpawnTower(RaycastHit hit)
@@ -94,7 +116,7 @@ public class BuildingManager : MonoBehaviour
 
         if (GameManager.instance.economy.SpawnTower())
         {
-            Instantiate(towerPrefab, new Vector3(hit.point.x, hit.point.y - 0.5f, hit.point.z), Quaternion.identity);
+            Instantiate(towerPrefab, new Vector3(hit.point.x, hit.point.y,  hit.point.z), Quaternion.identity);
         }
         else
         {

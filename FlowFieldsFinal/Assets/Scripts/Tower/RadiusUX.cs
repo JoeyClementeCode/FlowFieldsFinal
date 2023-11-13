@@ -24,7 +24,7 @@ public class RadiusUX : MonoBehaviour
 
     void UpdatePoints()
     {
-        float x, y, z;
+        float x, y;
         float angle = 20f;
 
         for (int i = 0; i < (segments + 1); i++)

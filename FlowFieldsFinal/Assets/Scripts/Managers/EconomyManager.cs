@@ -20,8 +20,6 @@ public class EconomyManager : MonoBehaviour
         {
             return false;
         }
-
-        return false;
     }
 
     public void GainCurrency(int amount)

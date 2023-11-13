@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1147,7 +1147,7 @@ GameObject:
   - component: {fileID: 889883691}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Enemy
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1229,12 +1229,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 7156301645698086240, guid: c3edc80e2df021d42bf7c9e5a58a4a27,
     type: 3}
-  phantomTower: {fileID: 1175967723487656055, guid: 7dbe9e801bdd8114ea2cc05b86e544b3,
+  phantomTower: {fileID: 7048542024676265276, guid: 572bc3967e4e94a4bb3d8398c87acbc7,
     type: 3}
   cam: {fileID: 330585545}
   buildMode: 0
   onCooldown: 0
+  isPlaceable: 0
   spawnCooldown: 2
+  placeableColor: {r: 0, g: 1, b: 0.96275425, a: 1}
+  notPlaceableColor: {r: 1, g: 0.4575472, b: 0.4575472, a: 1}
+  phantomMaterial: {fileID: 2100000, guid: 8cbcc75b364bbb54bb594728b4b712ba, type: 2}
+  phantomShader: {fileID: 0}
 --- !u!1 &1022760689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,7 +1826,7 @@ PrefabInstance:
     - target: {fileID: 9076496552457322441, guid: c3edc80e2df021d42bf7c9e5a58a4a27,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11
+      value: -1.53
       objectReference: {fileID: 0}
     - target: {fileID: 9076496552457322441, guid: c3edc80e2df021d42bf7c9e5a58a4a27,
         type: 3}
