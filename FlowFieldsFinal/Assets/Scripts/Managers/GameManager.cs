@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public EconomyManager economy;
     [HideInInspector] public UIManager ui;
+    [HideInInspector] public EnemyManager enemyManager;
+    [HideInInspector] public WaveManager waveManager;
     
     public bool gamePaused = false;
 
@@ -36,6 +38,8 @@ public class GameManager : MonoBehaviour
     {
         economy = GetComponent<EconomyManager>();
         ui = GetComponent<UIManager>();
+        enemyManager = GetComponent<EnemyManager>();
+        waveManager = GetComponent<WaveManager>();
     }
     
     private void PauseGame()
