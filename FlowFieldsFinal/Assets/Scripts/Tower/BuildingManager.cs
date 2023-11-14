@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
+    [Header("Public Variables")]
     [SerializeField] private GameObject towerPrefab;
     [SerializeField] private GameObject phantomTower;
-    private GameObject phantom;
     [SerializeField] private Camera cam;
-
+    public float spawnCooldown = 2.0f;
     
+    private GameObject phantom;
 
-
+    [Header("Checks")]
     public bool buildMode = false;
     public bool onCooldown = false;
     public bool isPlaceable = false;
-    public float spawnCooldown = 2.0f;
 
+    [Header("Tower Checks")]
+    public bool isTower = false;
+    public TowerAgent currentTower;
+
+    [Header("Pre-Visualization")]
     public Color placeableColor;
     public Color notPlaceableColor;
     public Material phantomMaterial;
@@ -72,11 +77,7 @@ public class BuildingManager : MonoBehaviour
             phantom.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
 
             Checks(hit);
-        
-            if (Input.GetKeyDown(KeyCode.C) && !onCooldown && isPlaceable)
-            {
-                StartCoroutine(SpawnTower(hit));
-            }
+            Inputs(hit);
         }
     }
 
@@ -85,13 +86,22 @@ public class BuildingManager : MonoBehaviour
         
         if (hit.transform.CompareTag("Ground"))
         {
+            isTower = false;
             isPlaceable = true;
             Debug.Log("Ground");
             phantomMaterial.SetColor("_PhantomColor", placeableColor);
-            //StartCoroutine(SpawnTower(hit));
+        }
+        else if (hit.transform.CompareTag("Tower"))
+        {
+            isTower = true;
+            isPlaceable = false;
+            Debug.Log("Tower");
+            phantomMaterial.SetColor("_PhantomColor", notPlaceableColor);
+            
         }
         else
         {
+            isTower = false;
             isPlaceable = false;
             phantomMaterial.SetColor("_PhantomColor", notPlaceableColor);
             Debug.Log("Not Anything?");
@@ -100,14 +110,24 @@ public class BuildingManager : MonoBehaviour
         if (hit.transform == null)
         {
             isPlaceable = false;
+            isTower = false;
+            phantomMaterial.SetColor("_PhantomColor", notPlaceableColor);
             Debug.Log("Null");
         }
-        
-        if (hit.transform.CompareTag("Tower"))
+    }
+
+    private void Inputs(RaycastHit hit)
+    {
+        if (Input.GetKeyDown(KeyCode.C) && !onCooldown && isPlaceable)
         {
-            //StartCoroutine(SwitchPriority(hit));
+            StartCoroutine(SpawnTower(hit));
         }
 
+        if (Input.GetKeyDown(KeyCode.G) && !onCooldown && isTower)
+        {
+            currentTower = hit.transform.GetComponent<TowerAgent>();
+            StartCoroutine(ActivateTower());
+        }
     }
 
     private IEnumerator SpawnTower(RaycastHit hit)
@@ -127,26 +147,41 @@ public class BuildingManager : MonoBehaviour
         onCooldown = false;
     }
 
-    private IEnumerator SwitchPriority(RaycastHit hit)
+    private IEnumerator ActivateTower()
     {
         onCooldown = true;
-        Debug.Log("Hitting Tower");
+        Debug.Log("Tower UI Activated");
 
-        TowerAgent tower = hit.transform.GetComponentInParent<TowerAgent>();
+        GameManager.instance.ui.TowerUI(currentTower);
 
-        switch (tower.targetPriority)
+        yield return new WaitForSeconds(spawnCooldown);
+        onCooldown = false;
+    }
+
+    public void Switch()
+    {
+        StartCoroutine(SwitchPriority());
+    }
+    
+    private IEnumerator SwitchPriority()
+    {
+        onCooldown = true;
+        Debug.Log("Switch");
+
+        switch (currentTower.targetPriority)
         {
             case TowerAgent.TowerTargetPriority.First:
-                tower.targetPriority = TowerAgent.TowerTargetPriority.Close;
+                currentTower.targetPriority = TowerAgent.TowerTargetPriority.Close;
                 break;
             case TowerAgent.TowerTargetPriority.Close:
-                tower.targetPriority = TowerAgent.TowerTargetPriority.Strong;
+                currentTower.targetPriority = TowerAgent.TowerTargetPriority.Strong;
                 break;
             case TowerAgent.TowerTargetPriority.Strong:
-                tower.targetPriority = TowerAgent.TowerTargetPriority.First;
+                currentTower.targetPriority = TowerAgent.TowerTargetPriority.First;
                 break;
         }
         
+        GameManager.instance.ui.UpdateTowerUI();
         yield return new WaitForSeconds(spawnCooldown);
         onCooldown = false;
     }
