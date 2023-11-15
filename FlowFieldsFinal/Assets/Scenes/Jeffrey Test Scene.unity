@@ -123,45 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &4840380 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7115220529963338761, guid: 480baec901fb95447b6a0ef5d2d374d1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1558929427}
-  m_PrefabAsset: {fileID: 0}
 --- !u!195 &4840383 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 4305148694678963787, guid: 480baec901fb95447b6a0ef5d2d374d1,
     type: 3}
   m_PrefabInstance: {fileID: 1558929427}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &4840388
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4840380}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &36137889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,6 +1244,54 @@ MonoBehaviour:
   cam: {fileID: 330585545}
   onCooldown: 0
   spawnCooldown: 2
+--- !u!1 &1018188480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1018188485}
+  - component: {fileID: 1018188481}
+  m_Layer: 0
+  m_Name: Enemy Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1018188481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018188480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e9e0ca3ca8b4f7419b2ff5869fb36e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 7115220529963338761, guid: 480baec901fb95447b6a0ef5d2d374d1,
+    type: 3}
+  objective: {fileID: 444559276}
+  spawnDelay: 5
+--- !u!4 &1018188485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018188480}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.39, y: 1.69, z: -3.72}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1022760689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1557,7 +1572,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 6a56c61471f3677418b18daeae32e99d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 55670b27db3bc194faf789ed74b897e4, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1186495769 stripped
 GameObject:
@@ -1746,11 +1761,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7115220529963338761, guid: 480baec901fb95447b6a0ef5d2d374d1,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4840388}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 480baec901fb95447b6a0ef5d2d374d1, type: 3}
 --- !u!1 &1576161574 stripped
 GameObject:
@@ -2061,3 +2072,4 @@ SceneRoots:
   - {fileID: 1022760692}
   - {fileID: 1036215531}
   - {fileID: 756476485}
+  - {fileID: 1018188485}

@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (target != null)
+        if (target != null && this != null)
         {
             agent.SetDestination((target.position));
         }

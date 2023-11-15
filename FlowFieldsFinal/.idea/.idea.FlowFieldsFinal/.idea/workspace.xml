@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5c7ee4b-519e-469f-97dd-02b1278f52a5" name="Changes" comment="" />
+    <list default="true" id="e5c7ee4b-519e-469f-97dd-02b1278f52a5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/PolygonPrototype/URP_ExtractMe.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Jeffrey Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Jeffrey Test Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,8 +19,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@14.0.8/Editor/Data/Graphs/SerializableMesh.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../team1project3/Team1Project3/Assets/Directory/Scripts/Managers/EnemyManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../team1project3/Team1Project3/Assets/Directory/Scripts/Managers/WaveManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
