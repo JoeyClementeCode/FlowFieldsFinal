@@ -1590,6 +1590,7 @@ MonoBehaviour:
     type: 3}
   cam: {fileID: 330585545}
   spawnCooldown: 2
+  rayDistance: 10
   buildMode: 0
   onCooldown: 0
   isPlaceable: 0
@@ -1598,7 +1599,6 @@ MonoBehaviour:
   placeableColor: {r: 0, g: 1, b: 0.96275425, a: 1}
   notPlaceableColor: {r: 1, g: 0.4575472, b: 0.4575472, a: 1}
   phantomMaterial: {fileID: 2100000, guid: 8cbcc75b364bbb54bb594728b4b712ba, type: 2}
-  phantomShader: {fileID: 0}
 --- !u!1 &1059464765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1790,7 +1790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1079676702
 RectTransform:
   m_ObjectHideFlags: 0

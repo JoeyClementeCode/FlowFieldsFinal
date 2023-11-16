@@ -9,6 +9,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private GameObject phantomTower;
     [SerializeField] private Camera cam;
     public float spawnCooldown = 2.0f;
+    public float rayDistance = 10.0f;
     
     private GameObject phantom;
 
@@ -25,7 +26,6 @@ public class BuildingManager : MonoBehaviour
     public Color placeableColor;
     public Color notPlaceableColor;
     public Material phantomMaterial;
-    public Shader phantomShader;
 
     // Update is called once per frame
     void Update()
@@ -64,7 +64,7 @@ public class BuildingManager : MonoBehaviour
     {
         RaycastHit hit;
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Physics.Raycast(ray, out hit, 5);
+        Physics.Raycast(ray, out hit, rayDistance);
         Debug.DrawRay(transform.position, ray.direction, Color.yellow);
 
         if (hit.collider != null)
