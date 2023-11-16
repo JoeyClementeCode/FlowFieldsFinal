@@ -10,16 +10,25 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform target;
+
+    [SerializeField] private FloatingHealthBar healthBar;
     
     public int Health { get; set; }
+
+    private int MaxHealth;
     public int Value { get; set; }
 
     public void Start()
     {
         Health = 3;
+        MaxHealth = Health;
         Value = 5;
+        
+        healthBar.UpdateHealthbar(Health, MaxHealth);
+
 
         agent = this.GetComponent<NavMeshAgent>();
+        healthBar.GetComponentInChildren<FloatingHealthBar>();
     }
 
     private void Update()
@@ -33,10 +42,11 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Health -= damage;
+        healthBar.UpdateHealthbar(Health, MaxHealth);
 
         if (Health <= 0)
         {
-            GameManager.instance.economy.GainCurrency(Value);
+            //GameManager.instance.economy.GainCurrency(Value);
             Destroy(this.gameObject);
         }
     }
