@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - GameManager
   - Tower
+  - Objective
   layers:
   - Default
   - TransparentFX

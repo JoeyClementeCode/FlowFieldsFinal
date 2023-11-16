@@ -9,21 +9,27 @@ public class EnemyMovingState : EnemyBaseState
 
     public override void UpdateState(EnemyStateManager enemy)
     {
-        enemy.SwitchState(enemy.attackingState);
+        //enemy.SwitchState(enemy.attackingState);
     }
 
     public override void OnCollisionEnter(EnemyStateManager enemy, Collision collision)
     {
-        GameObject other = collision.gameObject;
+    }
+    
+    
+    public override void OnTriggerEnter(EnemyStateManager enemy, Collider other)
+    {
+        GameObject c = other.gameObject;
 
-        if (other.CompareTag("Player"))
+        if (c.CompareTag("Player"))
         {
             //other.GetComponent<PlayerController>().LoseHealth;
         }
         
-        if (other.CompareTag("Nexus"))
+        if (c.CompareTag("Objective"))
         {
             enemy.SwitchState(enemy.attackingState);
+            Debug.Log("switching to the attacking state!");
             //other.GetComponent<Nexus>().LoseHealth;
         }
     }

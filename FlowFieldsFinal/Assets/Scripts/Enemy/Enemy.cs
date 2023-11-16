@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform target;
-
+    
     [SerializeField] private FloatingHealthBar healthBar;
     
     public int Health { get; set; }
@@ -23,12 +23,11 @@ public class Enemy : MonoBehaviour
         Health = 3;
         MaxHealth = Health;
         Value = 5;
-        
-        healthBar.UpdateHealthbar(Health, MaxHealth);
-
 
         agent = this.GetComponent<NavMeshAgent>();
         healthBar.GetComponentInChildren<FloatingHealthBar>();
+        
+        healthBar.UpdateHealthbar(Health, MaxHealth);
     }
 
     private void Update()

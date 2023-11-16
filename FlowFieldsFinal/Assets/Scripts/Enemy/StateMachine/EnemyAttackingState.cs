@@ -6,11 +6,13 @@ public class EnemyAttackingState : EnemyBaseState
     public override void EnterState(EnemyStateManager enemy)
     {
         Debug.Log("This is the attacking state");
+        
+        enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
     }
 
     public override void UpdateState(EnemyStateManager enemy)
     {
-        //enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
         if (attackTimer > 0)
         {
@@ -19,6 +21,8 @@ public class EnemyAttackingState : EnemyBaseState
         else
         {
             //attack nexus
+            Debug.Log("Damage done");
+            //GameManager.instance.objectiveManager.ObjectiveTakeDamage(1);
             attackTimer = 2.0f;
         }
         
@@ -27,5 +31,9 @@ public class EnemyAttackingState : EnemyBaseState
     public override void OnCollisionEnter(EnemyStateManager enemy, Collision collision)
     {
         
+    }
+
+    public override void OnTriggerEnter(EnemyStateManager enemy, Collider other)
+    {
     }
 }

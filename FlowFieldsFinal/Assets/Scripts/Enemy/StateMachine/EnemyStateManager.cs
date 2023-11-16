@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public  class EnemyStateManager : MonoBehaviour
@@ -30,5 +29,10 @@ public  class EnemyStateManager : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         currentState.OnCollisionEnter(this, collision);
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        currentState.OnTriggerEnter(this, other);
     }
 }

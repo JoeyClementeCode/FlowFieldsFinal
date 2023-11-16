@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public EnemyManager enemyManager;
     [HideInInspector] public WaveManager waveManager;
     [HideInInspector] public BuildingManager buildingManager;
+    [HideInInspector] public ObjectiveManager objectiveManager;
+
     
     public bool gamePaused = false;
 
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         enemyManager = GetComponent<EnemyManager>();
         waveManager = GetComponent<WaveManager>();
         buildingManager = GetComponent<BuildingManager>();
+        objectiveManager = GetComponent<ObjectiveManager>();
     }
     
     private void PauseGame()
