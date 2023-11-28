@@ -7,7 +7,7 @@ public class EnemyAttackingState : EnemyBaseState
     {
         Debug.Log("This is the attacking state");
         
-        enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
     }
 
@@ -25,6 +25,11 @@ public class EnemyAttackingState : EnemyBaseState
             //GameManager.instance.objectiveManager.ObjectiveTakeDamage(1);
             attackTimer = 2.0f;
         }
+
+        // if (GameManager.instance.objectiveManager.ObjectiveHealth < 10)
+        // {
+        //     //LOAD LOSE STATE
+        // }
         
     }
 

@@ -23,6 +23,8 @@ public class EnemyMovingState : EnemyBaseState
 
         if (c.CompareTag("Player"))
         {
+            Debug.Log("hit player");
+
             //other.GetComponent<PlayerController>().LoseHealth;
         }
         
