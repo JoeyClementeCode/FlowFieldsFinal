@@ -23,7 +23,9 @@ public class BuildingManager : MonoBehaviour
     public TowerAgent currentTower;
 
     [Header("Pre-Visualization")]
+    [ColorUsage(true, true)]
     public Color placeableColor;
+    [ColorUsage(true, true)]
     public Color notPlaceableColor;
     public Material phantomMaterial;
 
