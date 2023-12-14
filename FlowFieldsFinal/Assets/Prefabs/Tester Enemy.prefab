@@ -241,7 +241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1677409047224411958}
-  cam: {fileID: 0}
   target: {fileID: 2252727484271529753}
   offset: {x: 0, y: 1.5, z: 0}
 --- !u!1 &6752793778994865694
@@ -422,7 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
   target: {fileID: 0}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 5677291807644503778}
 --- !u!195 &4305148694678963787
 NavMeshAgent:
   m_ObjectHideFlags: 0
