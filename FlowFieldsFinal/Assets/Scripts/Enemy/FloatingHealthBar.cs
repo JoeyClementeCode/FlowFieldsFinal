@@ -9,10 +9,14 @@ public class FloatingHealthBar : MonoBehaviour
 {
     // value
     [SerializeField] private Slider slider;
-    [SerializeField] private Camera cam;
+    private Camera cam;
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
-    
+
+    private void Start()
+    {
+        cam = Camera.main;
+    }
 
     public void UpdateHealthbar(float currentHealth, float maxHealth)
     {
