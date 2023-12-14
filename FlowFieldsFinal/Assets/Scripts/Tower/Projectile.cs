@@ -12,6 +12,11 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
+
+        if (currentTarget == null)
+        {
+            Destroy(this.gameObject);
+        }
     }
     
     private void OnTriggerEnter (Collider other)

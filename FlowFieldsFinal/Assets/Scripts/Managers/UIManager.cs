@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     public void Update()
     {
         currencyUI.text = "Currency: " + GameManager.instance.economy.currentCurrency;
-        waveAmountUI.text = "Wave: " + GameManager.instance.waveManager.currentWave;
+       //aveAmountUI.text = "Wave: " + GameManager.instance.waveManager.currentWave;
 
         if (Input.GetKeyDown(KeyCode.Escape) && towerUIEnabled)
         {

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAttackingState : EnemyBaseState
@@ -7,7 +8,7 @@ public class EnemyAttackingState : EnemyBaseState
     {
         Debug.Log("This is the attacking state");
         
-        //enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        enemy.GetComponent<Enemy>().SetTarget(null);
 
     }
 
@@ -21,18 +22,16 @@ public class EnemyAttackingState : EnemyBaseState
         else
         {
             //attack nexus
+            GameManager.instance.objectiveManager.ObjectiveTakeDamage(1);
             Debug.Log("Damage done");
-            //GameManager.instance.objectiveManager.ObjectiveTakeDamage(1);
-            attackTimer = 2.0f;
+            attackTimer = 10.0f;
         }
-
         // if (GameManager.instance.objectiveManager.ObjectiveHealth < 10)
         // {
         //     //LOAD LOSE STATE
         // }
         
     }
-
     public override void OnCollisionEnter(EnemyStateManager enemy, Collision collision)
     {
         

@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     {
         if (target != null && this != null)
         {
-            agent.SetDestination((target.position));
+            agent.SetDestination(target.position);
         }
     }
 
