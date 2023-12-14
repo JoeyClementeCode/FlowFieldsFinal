@@ -37,7 +37,6 @@ public class ObjectiveManager : MonoBehaviour
         if (health <= 0)
         {
             //GameManager.instance.economy.GainCurrency(Value);
-            Destroy(this.gameObject);
         }
     }
 }
