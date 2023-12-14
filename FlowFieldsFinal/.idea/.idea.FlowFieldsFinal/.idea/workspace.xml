@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e5c7ee4b-519e-469f-97dd-02b1278f52a5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlowFieldsFinal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlowFieldsFinal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Phantom.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Phantom.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Jeffrey Test Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Jeffrey Test Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Jeffrey Test Scene/NavMesh-Ground.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Jeffrey Test Scene/NavMesh-Ground.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/StateMachine/EnemyAttackingState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/StateMachine/EnemyAttackingState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tower/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tower/Projectile.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +49,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+  <component name="RunManager">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.8f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Unity\GPR-340-GameAI\FlowFieldsFinal\FlowFieldsFinal -debugCodeOptimization" />
@@ -125,6 +122,7 @@
       <workItem from="1702521546308" duration="1070000" />
       <workItem from="1702543518694" duration="519000" />
       <workItem from="1702533826422" duration="1217000" />
+      <workItem from="1702546270545" duration="1565000" />
     </task>
     <servers />
   </component>

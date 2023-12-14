@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
 
         if (Health <= 0)
         {
-            //GameManager.instance.economy.GainCurrency(Value);
+            GameManager.instance.economy.GainCurrency(Value);
             Destroy(this.gameObject);
         }
     }
