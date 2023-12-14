@@ -11,12 +11,16 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentTarget == null)
+        {
+            Debug.Log("Destoryed Bullet");
+            Destroy(this.gameObject);
+            return;
+        }
+
         transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
 
-        if (currentTarget.gameObject == null)
-        {
-            Destroy(gameObject);
-        }
+        
     }
     
     private void OnTriggerEnter (Collider other)
